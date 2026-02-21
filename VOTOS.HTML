@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Votos Pro</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        h1 { color: #333; }
+        .container { width: 100%; max-width: 500px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .opcion { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+        .opcion:last-child { border-bottom: none; }
+        .nombre { font-weight: bold; flex-grow: 1; color: #555; }
+        .contador { font-size: 1.2rem; font-weight: bold; min-width: 40px; text-align: center; margin: 0 15px; color: #007bff; }
+        .botones { display: flex; gap: 8px; }
+        button { padding: 8px 15px; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: opacity 0.2s; }
+        .btn-mas { background-color: #28a745; color: white; }
+        .btn-menos { background-color: #dc3545; color: white; }
+        button:active { opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <h1>🗳️ Recuento de Votos</h1>
+    <div class="container" id="lista-votos">
+        </div>
+
+    <script>
+        const nombres = [
+            "Innovación Radical", "Impacto Social", "Eficiencia Pura", 
+            "Diseño Creativo", "Sostenibilidad", "Experiencia de Usuario", 
+            "Calidad Técnica", "Trabajo en Equipo", "Viabilidad Comercial", 
+            "Presentación Estelar", "Mención Especial"
+        ];
+
+        const contenedor = document.getElementById('lista-votos');
+
+        nombres.forEach((nombre, index) => {
+            const div = document.createElement('div');
+            div.className = 'opcion';
+            div.innerHTML = `
+                <span class="nombre">${nombre}</span>
+                <div class="botones">
+                    <button class="btn-menos" onclick="cambiarVoto(${index}, -1)">-</button>
+                    <span class="contador" id="voto-${index}">0</span>
+                    <button class="btn-mas" onclick="cambiarVoto(${index}, 1)">+</button>
+                </div>
+            `;
+            contenedor.appendChild(div);
+        });
+
+        function cambiarVoto(index, valor) {
+            const span = document.getElementById(voto-${index});
+            let actual = parseInt(span.innerText);
+            // Evitamos que baje de 0 si lo deseas, si no, quita el Math.max
+            span.innerText = Math.max(0, actual + valor);
+        }
+    </script>
+</body>
+</html>
